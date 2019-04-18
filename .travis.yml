@@ -14,6 +14,7 @@ env:
   - CASHER_TIME_OUT=1000
   - BUILD="elmi-to-json-${TRAVIS_TAG}-${TRAVIS_OS_NAME}.tar.gz"
   - LC_ALL=
+dist: xenial
 language: c
 os:
 - linux
