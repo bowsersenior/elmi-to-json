@@ -25,6 +25,7 @@ script:
 - |
   if [ "$TRAVIS_OS_NAME" = linux ]; then
     echo "Compiling static binary"
+    echo "LC_ALL: $LC_ALL"
     stack build --ghc-options "-O2 -fPIC" --flag="elmi-to-json:static"
   else
     echo "Compiling dynamic binary"
@@ -37,7 +38,6 @@ deploy:
     secure: j2jR3uwXjXYmulmIc9yuG+4ZmyPts8xBvfkMqUrNSRyg4VN3BOtAbRPu/zFprKnDoMOgTi4WCdEtgR483c2c6smcI0tqd5i8tIboz/SHgutLlv9AteHSLT/yZTsr0Cal98g56yPPgHF776rcAeZAfaBdkd7icfEXciFMcwRq+b3oJaP+Euhdi0+uV2p2PKTSJ8JkINhHZqNTC1VzFaqQAXo3aSxbuDv1b6l97RgxSMBR00O/7v9BBP80+09Fp49WCHbL/3UYYnZFJyA3fl3EcT7FZO1GzBJCAkxzmQDUBufdtnhW+ghd/1dX7li0lr6hmCxtxcYyj41lmnF1wCp7PcKWBt+qJ9PxxG7WHSTdtzmpG4VOVN84inrqmD1x2KW7tQ0fWBEnI2tBz+ckFufE4FtSQdSsQFK2f5RLw2dvPTA1NrH8iQJ9dpVeKEYkehYzNn3twpSANQ51ioRYZ9373EzGd/3eDhrBavyTw00yDHuXsRstZAXQaAFu9LN7833uncPyLpRzxW3kzbS49ofs3BsrAI2EDkuymabgjHbDB7CfBkLzWJIRDfYX0vwIs3IZHB6XZnDB/xweJcdz2y2ZElcLQoud0/rlwN+uhhHzBVxgiCy6dX82u18GYjuTjxtTaFKm3v1aD/cICNX75u4ZfT0pWdjt3l2WOdRXu7iFMrk=
   file: "${BUILD}"
   skip_cleanup: true
-  draft: true
   on:
     repo: bowsersenior/elmi-to-json
     branch: feature/fix-static-build
