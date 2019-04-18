@@ -14,9 +14,6 @@ env:
   - CASHER_TIME_OUT=1000
   - BUILD="elmi-to-json-${TRAVIS_TAG}-${TRAVIS_OS_NAME}.tar.gz"
 language: c
-os:
-- dist: xenial
-- osx
 sudo: false
 script:
 - stack setup
@@ -24,7 +21,6 @@ script:
 - |
   if [ "$TRAVIS_OS_NAME" = linux ]; then
     echo "Compiling static binary"
-    echo "LC_ALL: $LC_ALL"
     stack build --ghc-options "-O2 -fPIC" --flag="elmi-to-json:static"
   else
     echo "Compiling dynamic binary"
@@ -40,3 +36,8 @@ deploy:
   on:
     repo: bowsersenior/elmi-to-json
     branch: feature/fix-static-build
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+    - os: osx
