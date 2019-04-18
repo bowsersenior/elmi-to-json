@@ -15,7 +15,7 @@ env:
   - BUILD="elmi-to-json-${TRAVIS_TAG}-${TRAVIS_OS_NAME}.tar.gz"
 language: c
 os:
-- linux
+- dist: xenial
 - osx
 sudo: false
 script:
@@ -40,7 +40,3 @@ deploy:
   on:
     repo: bowsersenior/elmi-to-json
     branch: feature/fix-static-build
-matrix:
-  include:
-    - os: linux
-      dist: xenial
